@@ -167,3 +167,6 @@ footer {
   font-weight: lighter;
   font-size: 13px;
 }
+.github-link {
+  text-decoration: none;
+}
