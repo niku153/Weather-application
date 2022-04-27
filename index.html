@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/24f16ae55e.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="container shadow">
+      <form id="search-form">
+        <div class="row">
+          <div class="col-8">
+            <input
+              type="search"
+              placeholder="Search for a city"
+              class="form-control search-input-box shadow-sm"
+              id="search-input-box"
+              autocomplete="off"
+            />
+          </div>
+          <div class="col-2">
+            <input
+              type="submit"
+              value="Search"
+              class="form-control search-button"
+            />
+          </div>
+          <div class="col-1">
+            <input
+              type="submit"
+              value="📍"
+              class="form-control current-location-button"
+              id="current-location-button"
+            />
+          </div>
+        </div>
+      </form>
+      <div class="row">
+        <div class="col-sm-8 current-conditions shadow">
+          <h1 id="current-city">Perth, AU</h1>
+          <h2>
+            <span id="current-date">Wednesday, 6th April 2022</span>
+            <span class="current-time" id="current-time">3:43pm AWST</span>
+          </h2>
+          <div class="current-temperature-wrapper">
+            <span class="current-temperature" id="current-temperature">27</span
+            ><span class="units"
+              ><a href="#" class="celsius" id="celsius">°C</a> |
+              <a href="#" class="fahrenheit" id="fahrenheit">°F</a></span
+            >
+            <span
+              ><img
+                src="media/partly-cloudy-day.svg"
+                alt="Partly cloudy icon"
+                class="current-condition-icon"
+            /></span>
+            <div class="weather-description">Partly cloudy</div>
+          </div>
+          <ul class="other-parameters">
+            <li class="Wind">
+              <span
+                ><img
+                  src="media/wind.svg"
+                  alt="wind-icon"
+                  class="other-parameter-icon" /></span
+              >Wind: <span class="wind-value">13km/h</span>
+            </li>
+            <li class="Rainfall">
+              <span
+                ><img
+                  src="media/raindrop.svg"
+                  alt="raindrop-icon"
+                  class="other-parameter-icon" /></span
+              >Rainfall: <span class="rainfall-value">0mm</span>
+            </li>
+            <li class="Humidity">
+              <span
+                ><img
+                  src="media/thermometer.svg"
+                  alt="humidity-icon"
+                  class="other-parameter-icon" /></span
+              >Humidity: <span class="humidity-value">38%</span>
+            </li>
+            <li class="Sunrise">
+              <span
+                ><img
+                  src="media/sunrise.svg"
+                  alt="sunrise-icon"
+                  class="other-parameter-icon" /></span
+              >Sunrise: <span class="sunrise-time">6:31am</span>
+            </li>
+            <li class="Sunset">
+              <span
+                ><img
+                  src="media/sunset.svg"
+                  alt="sunset-icon"
+                  class="other-parameter-icon" /></span
+              >Sunset: <span class="sunset-time">6:03pm</span>
+            </li>
+            <li class="lunar-phase">
+              <span
+                ><img
+                  src="media/clear-night.svg"
+                  alt="nighttime-icon"
+                  class="other-parameter-icon" /></span
+              >Lunar phase:
+              <span class="lunar-phase">waxing gibbous</span>
+            </li>
+          </ul>
+        </div>
+        <div class="col-sm-4 forecast shadow">
+          <ul class="forecast-list">
+            <li>
+              <div>
+                <img
+                  src="media/partly-cloudy-day.svg"
+                  alt="partly-cloudy-day-icon"
+                  class="forecast-icons"
+                />
+              </div>
+              <div class="day-and-range">
+                Today<span class="temperature-range">13° | 29°</span>
+              </div>
+            </li>
+            <li>
+              <div>
+                <img
+                  src="media/clear-day.svg"
+                  alt="clear-day-icon"
+                  class="forecast-icons"
+                />
+              </div>
+              <div class="day-and-range">
+                Thu 7/04<span class="temperature-range">17° | 32°</span>
+              </div>
+            </li>
+            <li>
+              <div>
+                <img
+                  src="media/rain.svg"
+                  alt="rain-icon"
+                  class="forecast-icons"
+                />
+              </div>
+              <div class="day-and-range">
+                Fri 8/04<span class="temperature-range">17° | 26°</span>
+              </div>
+            </li>
+            <li>
+              <div>
+                <img
+                  src="media/clear-day.svg"
+                  alt="clear-day-icon"
+                  class="forecast-icons"
+                />
+              </div>
+              <div class="day-and-range">
+                Sat 9/04<span class="temperature-range">14° | 22°</span>
+              </div>
+            </li>
+            <li>
+              <div>
+                <img
+                  src="media/clear-day.svg"
+                  alt="clear-day-icon"
+                  class="forecast-icons"
+                />
+              </div>
+              <div class="day-and-range">
+                Sun 10/04<span class="temperature-range">11° | 22°</span>
+              </div>
+            </li>
+            <li>
+              <div>
+                <img
+                  src="media/clear-day.svg"
+                  alt="clear-day-icon"
+                  class="forecast-icons"
+                />
+              </div>
+              <div class="day-and-range">
+                Mon 11/04<span class="temperature-range">12° | 24°</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <footer>designed by nirali parikh</footer>
+    <script src="app.js"></script>
+  </body>
+</html>
