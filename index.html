@@ -66,8 +66,11 @@
                 src="media/partly-cloudy-day.svg"
                 alt="Partly cloudy icon"
                 class="current-condition-icon"
+                id="current-condition-icon"
             /></span>
-            <div class="weather-description">Partly cloudy</div>
+            <div class="weather-description" id="weather-description">
+              Partly cloudy
+            </div>
           </div>
           <ul class="other-parameters">
             <li class="Wind">
@@ -76,7 +79,7 @@
                   src="media/wind.svg"
                   alt="wind-icon"
                   class="other-parameter-icon" /></span
-              >Wind: <span class="wind-value">13km/h</span>
+              >Wind: <span class="wind-value" id="wind">13km/h</span>
             </li>
             <li class="Rainfall">
               <span
@@ -84,7 +87,7 @@
                   src="media/raindrop.svg"
                   alt="raindrop-icon"
                   class="other-parameter-icon" /></span
-              >Rainfall: <span class="rainfall-value">0mm</span>
+              >Rainfall: <span class="rainfall-value" id="rainfall">0mm</span>
             </li>
             <li class="Humidity">
               <span
@@ -92,7 +95,7 @@
                   src="media/thermometer.svg"
                   alt="humidity-icon"
                   class="other-parameter-icon" /></span
-              >Humidity: <span class="humidity-value">38%</span>
+              >Humidity: <span class="humidity-value" id="humidity">38%</span>
             </li>
             <li class="Sunrise">
               <span
@@ -100,7 +103,7 @@
                   src="media/sunrise.svg"
                   alt="sunrise-icon"
                   class="other-parameter-icon" /></span
-              >Sunrise: <span class="sunrise-time">6:31am</span>
+              >Sunrise: <span class="sunrise-time" id="sunrise">6:31am</span>
             </li>
             <li class="Sunset">
               <span
@@ -108,17 +111,17 @@
                   src="media/sunset.svg"
                   alt="sunset-icon"
                   class="other-parameter-icon" /></span
-              >Sunset: <span class="sunset-time">6:03pm</span>
+              >Sunset: <span class="sunset-time" id="sunset">6:03pm</span>
             </li>
-            <li class="lunar-phase">
+            <!-- <li class="lunar-phase">
               <span
                 ><img
                   src="media/clear-night.svg"
                   alt="nighttime-icon"
                   class="other-parameter-icon" /></span
               >Lunar phase:
-              <span class="lunar-phase">waxing gibbous</span>
-            </li>
+              <span class="lunar-phase">waxing gibbous</span> 
+            </li> -->
           </ul>
         </div>
         <div class="col-sm-4 forecast shadow">
