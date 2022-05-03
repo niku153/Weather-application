@@ -59,12 +59,13 @@ function displayTemperature(response) {
 
   celsiusTemperature = response.data.main.temp;
 
+  console.log(response.data.rain);
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
   cityElement.innerHTML = `${response.data.name}, ${response.data.sys.country}`;
   descriptionElement.innerHTML = response.data.weather[0].main;
   windElement.innerHTML = `${Math.round(response.data.wind.speed)}km/h`;
   rainfallElement.innerHTML = `${response.data.rain["1h"]}mm`;
-  humidityElement.innerHTML = response.data.main.humidity;
+  humidityElement.innerHTML = `${response.data.main.humidity}%`;
   sunriseElement.innerHTML = response.data.sys.sunrise * 1000;
   sunsetElement.innerHTML = response.data.sys.sunset * 1000;
   //dateElement.innerHTML = formatDate(response.data.dt * 1000);
@@ -74,7 +75,9 @@ function displayTemperature(response) {
   );
   icon.setAttribute("alt", response.data.weather[0].description);
 
-  if (response.data.rain === undefined) {
+  if (response.data.rain !== undefined) {
+    rainfallElement.innerHTML = `${response.data.rain["1h"]}mm`;
+  } else {
     rainfallElement.innerHTML = "0mm";
   }
 }
