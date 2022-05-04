@@ -64,7 +64,6 @@ function displayTemperature(response) {
   cityElement.innerHTML = `${response.data.name}, ${response.data.sys.country}`;
   descriptionElement.innerHTML = response.data.weather[0].main;
   windElement.innerHTML = `${Math.round(response.data.wind.speed)}km/h`;
-  rainfallElement.innerHTML = `${response.data.rain["1h"]}mm`;
   humidityElement.innerHTML = `${response.data.main.humidity}%`;
   sunriseElement.innerHTML = response.data.sys.sunrise * 1000;
   sunsetElement.innerHTML = response.data.sys.sunset * 1000;
@@ -73,7 +72,8 @@ function displayTemperature(response) {
     "src",
     `https://raw.githubusercontent.com/niku153/Weather-application/main/media/${response.data.weather[0].icon}.svg`
   );
-  icon.setAttribute("alt", response.data.weather[0].description);
+  iconElement.setAttribute("alt", response.data.weather[0].description);
+  //rainfallElement.innerHTML = `${response.data.rain["1h"]}mm`;
 
   if (response.data.rain !== undefined) {
     rainfallElement.innerHTML = `${response.data.rain["1h"]}mm`;
@@ -106,12 +106,12 @@ form.addEventListener("submit", retrieveCityName);
 
 //Add a Current Location button. When clicking on it, it uses the Geolocation API to get your GPS coordinates and display and the city and current temperature using the OpenWeather API.
 
-/*function getCurrentLocationTemperature(position) {
+function getCurrentLocationTemperature(position) {
   let apiKey = "06bc256f164c93573001cb99d320c17d";
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
-  axios.get(apiUrl).then(showTemperature);
+  axios.get(apiUrl).then(displayTemperature);
 }
 
 function getCurrentLocation(event) {
@@ -120,4 +120,4 @@ function getCurrentLocation(event) {
 }
 
 let currentLocation = document.querySelector("#current-location-button");
-currentLocation.addEventListener("click", getCurrentLocation); */
+currentLocation.addEventListener("click", getCurrentLocation);
