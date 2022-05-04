@@ -1,49 +1,54 @@
-//Challenge 1
-//In your project, display the current date and time using JavaScript: Tuesday 16:00
+// Format date
 
-/*let now = new Date();
+function formatDate(timestamp) {
+  let date = new Date(timestamp);
 
-let days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
 
-let months = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
+  let months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
 
-let currentYear = now.getFullYear();
-let currentDay = days[now.getDay()];
-let currentMonth = months[now.getMonth()];
-let currentDate = now.getDate();
-let currentHour = now.getHours();
-let currentMinutes = now.getMinutes();
+  let currentDate = date.getDate();
+  let day = days[date.getDay()];
+  let month = months[date.getMonth()];
 
-let newDate = document.querySelector("#current-date");
-newDate.innerHTML = `${currentDay}, ${currentDate} ${currentMonth} ${currentYear}`;
+  return `${day}, ${month} ${currentDate}`;
+}
 
-let newTime = document.querySelector("#current-time");
-newTime.innerHTML = `${currentHour}:${currentMinutes}`;*/
+function formatTime(timestamp) {
+  let date = new Date(timestamp);
+  let hours = date.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  return `${hours}:${minutes}`;
+}
 
-//API + Geolocation JS
-//In your project, when a user searches for a city (example: New York), it should display the name of the city on the result page and the current temperature of the city.
-
+// Display conditions for searched city
 function displayTemperature(response) {
   console.log(response);
   let temperatureElement = document.querySelector("#current-temperature");
@@ -54,26 +59,26 @@ function displayTemperature(response) {
   let humidityElement = document.querySelector("#humidity");
   let sunriseElement = document.querySelector("#sunrise");
   let sunsetElement = document.querySelector("#sunset");
-  //let dateElement = document.querySelector("current-date");
+  let dateElement = document.querySelector("#current-date");
+  let timeElement = document.querySelector("#current-time");
   let iconElement = document.querySelector("#current-condition-icon");
 
   celsiusTemperature = response.data.main.temp;
 
-  console.log(response.data.rain);
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
   cityElement.innerHTML = `${response.data.name}, ${response.data.sys.country}`;
   descriptionElement.innerHTML = response.data.weather[0].main;
   windElement.innerHTML = `${Math.round(response.data.wind.speed)}km/h`;
   humidityElement.innerHTML = `${response.data.main.humidity}%`;
-  sunriseElement.innerHTML = response.data.sys.sunrise * 1000;
-  sunsetElement.innerHTML = response.data.sys.sunset * 1000;
-  //dateElement.innerHTML = formatDate(response.data.dt * 1000);
+  sunriseElement.innerHTML = formatTime(response.data.sys.sunrise * 1000);
+  sunsetElement.innerHTML = formatTime(response.data.sys.sunset * 1000);
+  dateElement.innerHTML = formatDate(response.data.dt * 1000);
+  timeElement.innerHTML = formatTime(response.data.dt * 1000);
   iconElement.setAttribute(
     "src",
     `https://raw.githubusercontent.com/niku153/Weather-application/main/media/${response.data.weather[0].icon}.svg`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
-  //rainfallElement.innerHTML = `${response.data.rain["1h"]}mm`;
 
   if (response.data.rain !== undefined) {
     rainfallElement.innerHTML = `${response.data.rain["1h"]}mm`;
@@ -82,13 +87,7 @@ function displayTemperature(response) {
   }
 }
 
-/*let temperature = Math.round(response.data.main.temp);
-  temperatureElement.innerHTML = `${temperature}`;
-  let newCity = response.data.name;
-  let newCountryCode = response.data.sys.country;
-  cityElement.innerHTML = `${newCity}, ${newCountryCode}`;
-  console.log(response);*/
-
+// Retrieve data for searched city
 function retrieveCityData(city) {
   let apiKey = "06bc256f164c93573001cb99d320c17d";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
@@ -104,8 +103,7 @@ function retrieveCityName(event) {
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", retrieveCityName);
 
-//Add a Current Location button. When clicking on it, it uses the Geolocation API to get your GPS coordinates and display and the city and current temperature using the OpenWeather API.
-
+// Get current location conditions
 function getCurrentLocationTemperature(position) {
   let apiKey = "06bc256f164c93573001cb99d320c17d";
   let lat = position.coords.latitude;
@@ -121,3 +119,34 @@ function getCurrentLocation(event) {
 
 let currentLocation = document.querySelector("#current-location-button");
 currentLocation.addEventListener("click", getCurrentLocation);
+
+retrieveCityData("Perth");
+
+// Convert to fahrenheit
+
+function showFahrenheit(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#current-temperature");
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+}
+
+let celsiusTemperature = null;
+
+let fahrenheitLink = document.querySelector("#fahrenheit");
+fahrenheitLink.addEventListener("click", showFahrenheit);
+
+// Convert to celsius
+
+function showCelsius(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#current-temperature");
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+}
+
+let celsiusLink = document.querySelector("#celsius");
+celsiusLink.addEventListener("click", showCelsius);
