@@ -48,6 +48,36 @@ function formatTime(timestamp) {
   return `${hours}:${minutes}`;
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let days = ["Thu", "Fri", "Sat", "Sun", "Mon", "Tue"];
+
+  let forecastHTML = `<div class="col-12">`;
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<ul class="weather-forecast">
+      <li class="forecast-day-wrapper">
+              <div>
+                <div>
+                  <img src="media/04d.svg" alt="" class="forecast-icons" />
+                </div>
+                <div class="forecast-day">${day}</div>
+              </div>
+              <span class="temperature-range">
+                <span class="temperature-maximum">13°</span> |
+                <span class="temperature-minimum"> 29°</span>
+              </span>
+            </li>
+  `;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+  console.log(forecastHTML);
+}
+
 // Display conditions for searched city
 function displayTemperature(response) {
   console.log(response);
@@ -150,3 +180,5 @@ function showCelsius(event) {
 
 let celsiusLink = document.querySelector("#celsius");
 celsiusLink.addEventListener("click", showCelsius);
+
+displayForecast();

@@ -26,7 +26,7 @@
             <input
               type="search"
               placeholder="Search for a city"
-              class="form-control search-input-box shadow-sm"
+              class="form-control search-input-box"
               id="search-input-box"
               autocomplete="off"
             />
@@ -35,14 +35,14 @@
             <input
               type="submit"
               value="Search"
-              class="form-control search-button shadow-sm"
+              class="form-control search-button"
             />
           </div>
           <div class="col-1">
             <input
               type="submit"
               value="📍"
-              class="form-control current-location-button shadow-sm"
+              class="form-control current-location-button"
               id="current-location-button"
             />
           </div>
@@ -77,7 +77,8 @@
                   src="media/wind.svg"
                   alt="wind-icon"
                   class="other-parameter-icon" /></span
-              >Wind: <span class="wind-value" id="wind"></span>
+              >Wind:
+              <span class="wind-value other-parameter-values" id="wind"></span>
             </li>
             <li class="Rainfall">
               <span
@@ -85,7 +86,11 @@
                   src="media/raindrop.svg"
                   alt="raindrop-icon"
                   class="other-parameter-icon" /></span
-              >Rainfall: <span class="rainfall-value" id="rainfall"></span>
+              >Rainfall:
+              <span
+                class="rainfall-value other-parameter-values"
+                id="rainfall"
+              ></span>
             </li>
             <li class="Humidity">
               <span
@@ -93,7 +98,11 @@
                   src="media/thermometer.svg"
                   alt="humidity-icon"
                   class="other-parameter-icon" /></span
-              >Humidity: <span class="humidity-value" id="humidity"></span>
+              >Humidity:
+              <span
+                class="humidity-value other-parameter-values"
+                id="humidity"
+              ></span>
             </li>
             <li class="Sunrise">
               <span
@@ -101,7 +110,11 @@
                   src="media/sunrise.svg"
                   alt="sunrise-icon"
                   class="other-parameter-icon" /></span
-              >Sunrise: <span class="sunrise-time" id="sunrise"></span>
+              >Sunrise:
+              <span
+                class="sunrise-time other-parameter-values"
+                id="sunrise"
+              ></span>
             </li>
             <li class="Sunset">
               <span
@@ -109,7 +122,11 @@
                   src="media/sunset.svg"
                   alt="sunset-icon"
                   class="other-parameter-icon" /></span
-              >Sunset: <span class="sunset-time" id="sunset"></span>
+              >Sunset:
+              <span
+                class="sunset-time other-parameter-values"
+                id="sunset"
+              ></span>
             </li>
             <!-- <li class="lunar-phase">
               <span
@@ -122,57 +139,22 @@
             </li> -->
           </ul>
         </div>
-        <div class="col-sm-4 forecast shadow">
-          <ul class="forecast-list">
-            <li>
+
+        <div class="col-sm-4 forecast shadow" id="forecast">
+          <!-- <ul class="weather-forecast">
+            <li class="forecast-day-wrapper">
               <div>
-                <img src="" alt="" class="forecast-icons" />
+                <div>
+                  <img src="media/04d.svg" alt="" class="forecast-icons" />
+                </div>
+                <div class="forecast-day">Mon</div>
               </div>
-              <div class="day-and-range">
-                Today<span class="temperature-range">13° | 29°</span>
-              </div>
+              <span class="temperature-range">
+                <span class="temperature-maximum">13°</span> |
+                <span class="temperature-minimum"> 29°</span>
+              </span>
             </li>
-            <li>
-              <div>
-                <img src="" alt="" class="forecast-icons" />
-              </div>
-              <div class="day-and-range">
-                Thu 7/04<span class="temperature-range">17° | 32°</span>
-              </div>
-            </li>
-            <li>
-              <div>
-                <img src="" alt="" class="forecast-icons" />
-              </div>
-              <div class="day-and-range">
-                Fri 8/04<span class="temperature-range">17° | 26°</span>
-              </div>
-            </li>
-            <li>
-              <div>
-                <img src="" alt="" class="forecast-icons" />
-              </div>
-              <div class="day-and-range">
-                Sat 9/04<span class="temperature-range">14° | 22°</span>
-              </div>
-            </li>
-            <li>
-              <div>
-                <img src="" alt="" class="forecast-icons" />
-              </div>
-              <div class="day-and-range">
-                Sun 10/04<span class="temperature-range">11° | 22°</span>
-              </div>
-            </li>
-            <li>
-              <div>
-                <img src="" alt="" class="forecast-icons" />
-              </div>
-              <div class="day-and-range">
-                Mon 11/04<span class="temperature-range">12° | 24°</span>
-              </div>
-            </li>
-          </ul>
+          </ul> -->
         </div>
       </div>
     </div>

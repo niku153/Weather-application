@@ -1,5 +1,5 @@
 .container {
-  border: 2px solid #949aa9;
+  border: 1px solid #949aa9;
   display: block;
   max-width: 725px;
   margin: 50px auto;
@@ -52,7 +52,7 @@
   background-color: #f5f5f5;
 }
 .current-conditions {
-  border: 1px solid #949aa9;
+  border: 1px solid #ced4d9;
   border-radius: 10px;
   margin: 10px 0 40px 40px;
   max-width: 350px;
@@ -60,7 +60,7 @@
 }
 
 .forecast {
-  border: 1px solid #949aa9;
+  border: 1px solid #ced4d9;
   border-radius: 10px;
   margin: 10px 10px 40px 40px;
   max-width: 325px;
@@ -128,18 +128,41 @@ h2 {
   list-style-type: none;
   padding-left: 10px;
   padding-top: 10px;
-  font-size: 13px;
+  font-size: 15px;
   color: #949aa9;
+  line-height: 65px;
 }
 
 .other-parameter-icon {
   max-width: 40px;
 }
 
-.forecast-list {
+.other-parameter-values {
+  color: #5a6275;
+}
+
+.weather-forecast {
   list-style-type: none;
   padding: 0;
   color: #949aa9;
+}
+
+.forecast-day-wrapper:first-child {
+  margin: 10px 0px 0px 0px;
+}
+
+.forecast-day-wrapper {
+  padding: 0 5px 5px 0px;
+  border-radius: 10px;
+}
+
+.forecast-day-wrapper:last-child {
+  margin: 0px 0px 0px 0px;
+}
+
+.forecast-day-wrapper:hover {
+  background-color: #f5f5f5;
+  transition: all 250ms ease-in-out;
 }
 
 .forecast-icons {
@@ -147,17 +170,17 @@ h2 {
   padding-top: 10px;
 }
 
-.day-and-range {
-  font-size: 12px;
+.forecast-day {
+  font-size: 13px;
   margin: -2px 10px 0 10px;
 }
 
 .temperature-range {
   float: right;
-  font-size: 15px;
+  font-size: 14px;
   position: relative;
-  top: -25px;
-  color: #5a6275;
+  top: -45px;
+  color: #949aa9;
 }
 
 footer {
