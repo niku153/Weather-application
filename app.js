@@ -48,30 +48,47 @@ function formatTime(timestamp) {
   return `${hours}:${minutes}`;
 }
 
+function formatForecastDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
+}
+
 function displayForecast(response) {
-  console.log(response.data.daily);
+  let forecast = response.data.daily;
+
   let forecastElement = document.querySelector("#forecast");
 
-  let days = ["Thu", "Fri", "Sat", "Sun", "Mon", "Tue"];
-
   let forecastHTML = `<div class="col-12">`;
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `<ul class="weather-forecast">
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `<ul class="weather-forecast">
       <li class="forecast-day-wrapper">
               <div>
                 <div>
-                  <img src="media/04d.svg" alt="" class="forecast-icons" />
+                  <img src="https://raw.githubusercontent.com/niku153/Weather-application/main/media/${
+                    forecastDay.weather[0].icon
+                  }.svg" alt="" class="forecast-icons" />
                 </div>
-                <div class="forecast-day">${day}</div>
+                <div class="forecast-day">${formatForecastDay(
+                  forecastDay.dt
+                )}</div>
               </div>
               <span class="temperature-range">
-                <span class="temperature-maximum">13°</span> |
-                <span class="temperature-minimum"> 29°</span>
+                <span class="temperature-maximum">${Math.round(
+                  forecastDay.temp.max
+                )}°</span> | 
+                <span class="temperature-minimum">${Math.round(
+                  forecastDay.temp.min
+                )}°</span>
               </span>
             </li>
   `;
+    }
   });
 
   forecastHTML = forecastHTML + `</div>`;
@@ -157,8 +174,6 @@ function getCurrentLocation(event) {
 
 let currentLocation = document.querySelector("#current-location-button");
 currentLocation.addEventListener("click", getCurrentLocation);
-
-retrieveCityData("Perth");
 
 // Convert to fahrenheit
 
