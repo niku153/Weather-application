@@ -81,7 +81,7 @@ function displayForecast(response) {
               <span class="temperature-range">
                 <span class="temperature-maximum">${Math.round(
                   forecastDay.temp.max
-                )}°</span> | 
+                )}°</span>  
                 <span class="temperature-minimum">${Math.round(
                   forecastDay.temp.min
                 )}°</span>
@@ -190,6 +190,8 @@ let celsiusTemperature = null;
 
 let fahrenheitLink = document.querySelector("#fahrenheit");
 fahrenheitLink.addEventListener("click", showFahrenheit);
+
+retrieveCityData("Perth");
 
 // Convert to celsius
 

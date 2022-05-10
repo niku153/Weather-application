@@ -178,12 +178,18 @@ h2 {
 
 .temperature-range {
   float: right;
-  font-size: 14px;
+  font-size: 13px;
   position: relative;
   top: -45px;
   color: #949aa9;
 }
 
+.temperature-maximum {
+  color: #596274;
+}
+.temperature-minimum {
+  color: #abafbb;
+}
 footer {
   margin-left: 365px;
   margin-top: -45px;
@@ -192,5 +198,9 @@ footer {
   font-size: 13px;
 }
 .github-link {
+  text-decoration: none;
+}
+
+.netlify-link {
   text-decoration: none;
 }
